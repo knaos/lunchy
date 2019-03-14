@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect} from "react-router-dom";
 
 const PrivateRoute = ({
   component: Component,
@@ -18,6 +18,8 @@ const PrivateRoute = ({
 
       if (canGo) {
         return <Component {...props} {...componentProps} routes={routes} />;
+      } else {
+        return <Redirect to="/login"></Redirect>;
       }
     }}
   />
