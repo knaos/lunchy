@@ -5,8 +5,12 @@ import "./App.css";
 import MainRoutes from "./components/MainRoutes";
 import configureStore from "./redux/store";
 
+import {requestLogIn} from './redux/actions/user';
+
+
 const store = configureStore();
 
+store.dispatch(requestLogIn('user', 'pass'));
 class App extends Component {
   render() {
     return (
