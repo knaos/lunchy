@@ -8,11 +8,36 @@ class Restaurants extends React.Component {
   }
 
   render() {
-    return "Restaurants";
+    const { restaurants } = this.props;
+    return (
+      <section>
+        <h1>Restaurants</h1>
+        {restaurants && (
+          <table className="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              {restaurants.map(restaurant => (
+                <tr key={restaurant.id}>
+                  <td>{restaurant.id}</td>
+                  <td>{restaurant.name}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </section>
+    );
   }
 }
 
-const mapStateToProps = () => ({});
+const mapStateToProps = state => ({
+  restaurants: state.restaurants.restaurants
+});
 
 const mapDispatchToProps = dispatch => {
   return {
