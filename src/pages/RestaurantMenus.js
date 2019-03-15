@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchRestaurantMenus } from "../redux/actions/restaurants";
+import { Link } from "react-router-dom";
 
 class RestaurantMenus extends React.Component {
   componentDidMount() {
@@ -8,10 +9,7 @@ class RestaurantMenus extends React.Component {
   }
 
   render() {
-    const {
-      menus,
-      history: { params: id }
-    } = this.props;
+    const { menus, match } = this.props;
     return (
       <section>
         <div>
@@ -33,7 +31,9 @@ class RestaurantMenus extends React.Component {
                 <tr key={menu.id}>
                   <td>{menu.id}</td>
                   <td>
-                    <span>{menu.name}</span>
+                    <Link to={`/restaurants/${match.params.id}/menu-items`}>
+                      {menu.name}
+                    </Link>
                   </td>
                 </tr>
               ))}

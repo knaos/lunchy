@@ -31,7 +31,9 @@ class Restaurants extends React.Component {
                 <tr key={restaurant.id}>
                   <td>{restaurant.id}</td>
                   <td>
-                    <span>{restaurant.name}</span>
+                    <Link to={`/restaurants/${restaurant.id}/menus`}>
+                      {restaurant.name}
+                    </Link>
                   </td>
                 </tr>
               ))}

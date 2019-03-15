@@ -1,21 +1,26 @@
 import React from "react";
 import { connect } from "react-redux";
+import { fetchRestaurantMenuItems } from "../redux/actions/restaurants";
 
 class RestaurantMenuItems extends React.Component {
+  componentDidMount() {
+    this.props.fetchMenuItems(this.props.match.params.id);
+  }
   render() {
     const {
-      menus,
+      menuItems,
       history: { params: id }
     } = this.props;
+
     return (
       <section>
         <div>
-          <h1>Restaurants</h1>
+          <h1>Menu items</h1>
           {/* <Link to="/restaurants/add">
             <button className="btn btn-primary">Add restaurant</button>
           </Link> */}
         </div>
-        {menus && (
+        {menuItems && (
           <table style={{ marginTop: "20px" }} className="table">
             <thead>
               <tr>
@@ -24,7 +29,7 @@ class RestaurantMenuItems extends React.Component {
               </tr>
             </thead>
             <tbody>
-              {menus.map(menu => (
+              {menuItems.map(menu => (
                 <tr key={menu.id}>
                   <td>{menu.id}</td>
                   <td>
@@ -41,7 +46,16 @@ class RestaurantMenuItems extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  menus: state.restaurants.menus
+  menuItems: state.restaurants.menuItems
 });
 
-export default connect(mapStateToProps)(RestaurantMenuItems);
+const mapDisptachToProps = dispatch => {
+  return {
+    fetchMenuItems: id => dispatch(fetchRestaurantMenuItems(id))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDisptachToProps
+)(RestaurantMenuItems);

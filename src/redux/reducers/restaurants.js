@@ -3,7 +3,8 @@ import {
   FETCH_RESTAURANTS_SUCCESS,
   FETCH_RESTAURANTS_ERROR,
   FETCH_RESTAURANT_WITH_MENUS,
-  FETCH_RESTAURANT_MENUS
+  FETCH_RESTAURANT_MENUS,
+  FETCH_RESTAURANT_MENU_ITEMS
 } from "../actions/restaurants";
 
 const initialState = {
@@ -39,6 +40,8 @@ export default function(state = initialState, action) {
       // }, {});
 
       return { ...state, menus: action.payload };
+    case FETCH_RESTAURANT_MENU_ITEMS:
+      return { ...state, menuItems: action.payload };
     default:
       return state;
   }
