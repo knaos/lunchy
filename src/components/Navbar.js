@@ -16,8 +16,9 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
+import HomeIcon from "@material-ui/icons/Home";
+import FastFoodIcon from "@material-ui/icons/Fastfood";
+import { NavLink } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -80,6 +81,9 @@ const styles = theme => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing.unit * 3
+  },
+  a: {
+    display: "flex"
   }
 });
 
@@ -150,10 +154,20 @@ class Navbar extends React.Component {
           <Divider />
           <List>
             <ListItem button>
-              <ListItemIcon>
-                <InboxIcon />
-              </ListItemIcon>
-              <ListItemText primary={"Restaurants"} />
+              <NavLink to="/" className={classes.a}>
+                <ListItemIcon>
+                  <HomeIcon />
+                </ListItemIcon>
+                <ListItemText primary={"Home"} />
+              </NavLink>
+            </ListItem>
+            <ListItem button>
+              <NavLink to="/restaurants" className={classes.a}>
+                <ListItemIcon>
+                  <FastFoodIcon />
+                </ListItemIcon>
+                <ListItemText primary={"Restaurants"} />
+              </NavLink>
             </ListItem>
           </List>
         </Drawer>
