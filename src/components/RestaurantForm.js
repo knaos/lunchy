@@ -47,6 +47,7 @@ export default class RestaurantForm extends React.Component {
             type="text"
             className="form-control"
             id="restaurant-name"
+            placeholder="Restaurant name"
             onChange={this.nameChange}
             value={this.state.name}
           />

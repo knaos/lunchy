@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { requestRestaurants } from "../redux/actions/restaurants";
+import { Link } from "react-router-dom";
 
 class Restaurants extends React.Component {
   componentDidMount() {
@@ -11,9 +12,14 @@ class Restaurants extends React.Component {
     const { restaurants } = this.props;
     return (
       <section>
-        <h1>Restaurants</h1>
+        <div>
+          <h1>Restaurants</h1>
+          <Link to="/restaurants/add">
+            <button className="btn btn-primary">Add restaurant</button>
+          </Link>
+        </div>
         {restaurants && (
-          <table className="table">
+          <table style={{ marginTop: "20px" }} className="table">
             <thead>
               <tr>
                 <th>ID</th>
