@@ -9,6 +9,10 @@ export const EDIT_RESTAURANT = "EDIT_RESTAURANT";
 export const EDIT_RESTAURANT_SUCCESS = "EDIT_RESTAURANT_SUCCESS";
 export const EDIT_RESTAURANT_ERROR = "EDIT_RESTAURANT_ERROR";
 
+export const ADD_RESTAURANT = "ADD_RESTAURANT";
+export const ADD_RESTAURANT_SUCCESS = "ADD_RESTAURANT_SUCCESS";
+export const ADD_RESTAURANT_ERROR = "ADD_RESTAURANT_ERROR";
+
 export const requestRestaurants = () => {
   return dispatch => {
     dispatch({ type: FETCH_RESTAURANTS });
@@ -59,6 +63,33 @@ export const editRestuarantSuccess = payload => ({
 });
 
 export const editRestuarantError = error => ({
+  type: EDIT_RESTAURANT_SUCCESS,
+  payload: error
+});
+
+export const addRestaurant = restaurant => {
+  return dispatch => {
+    dispatch({ type: ADD_RESTAURANT });
+
+    return api
+      .post(`/restaurants`, restaurant)
+      .then(response => {
+        console.log("add response", response);
+        dispatch(addRestuarantSuccess());
+      })
+      .catch(error => {
+        console.log("add restaurant error:", error);
+        dispatch(addRestuarantError(error));
+      });
+  };
+};
+
+export const addRestuarantSuccess = payload => ({
+  type: ADD_RESTAURANT_SUCCESS,
+  payload
+});
+
+export const addRestuarantError = error => ({
   type: EDIT_RESTAURANT_SUCCESS,
   payload: error
 });
