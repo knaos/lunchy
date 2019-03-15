@@ -10,7 +10,7 @@ const NotFound = () => <h1>Not Found</h1>;
 const MainRoutes = () => (
   <Fragment>
     <Navbar />
-    <main>
+    <main style={{ padding: "100px 20px 20px 100px" }}>
       <Switch>
         {publicRoutes.map(route => (
           <RouteWithSubRoutes key={route.path} {...route} />
