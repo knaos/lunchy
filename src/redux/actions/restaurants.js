@@ -13,7 +13,7 @@ export const requestRestaurants = () => {
       .get("/restaurants")
       .then(response => {
         console.log(response);
-        dispatch(fetchRestaurantsSuccess(response));
+        dispatch(fetchRestaurantsSuccess(response.collection));
       })
       .catch(error => {
         dispatch(fetchRestaurantsError());

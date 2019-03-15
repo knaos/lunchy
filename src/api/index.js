@@ -18,4 +18,16 @@ httpService.interceptors.request.use(
   error => Promise.reject(error)
 );
 
+// Add a response interceptor
+httpService.interceptors.response.use(
+  function(response) {
+    // Do something with response data
+    return response.data;
+  },
+  function(error) {
+    // Do something with response error
+    return Promise.reject(error);
+  }
+);
+
 export default httpService;
