@@ -1,12 +1,19 @@
 import {
   FETCH_RESTAURANTS,
   FETCH_RESTAURANTS_SUCCESS,
-  FETCH_RESTAURANTS_ERROR
+  FETCH_RESTAURANTS_ERROR,
+  FETCH_RESTAURANT_WITH_MENUS,
+  FETCH_RESTAURANT_MENUS
 } from "../actions/restaurants";
 
 const initialState = {
   restaurants: [],
-  loading: false
+  loading: false,
+  menusById: {},
+  menus: [],
+  selectedRestaurant: "",
+  menuItemsById: {},
+  menuItems: []
 };
 
 export default function(state = initialState, action) {
@@ -17,6 +24,21 @@ export default function(state = initialState, action) {
       return { ...state, restaurants: action.payload, loading: false };
     case FETCH_RESTAURANTS_ERROR:
       return { ...state, loading: false };
+    case FETCH_RESTAURANT_MENUS:
+      // let menus = [];
+      // let menuItems = [];
+      // let menuItemsById = {};
+
+      // let menusById = action.payload.menus.reduce((m, menu) => {
+      //   m[menu.id] = menu;
+      //   menus.push(menu.id);
+      //   // menu.menuItems.reduce((mi, menuItem) => {
+      //   //   menuItemsById[menuItem.id] =
+      //   // })
+      //   return m;
+      // }, {});
+
+      return { ...state, menus: action.payload };
     default:
       return state;
   }

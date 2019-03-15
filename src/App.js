@@ -5,12 +5,18 @@ import "./App.css";
 import MainRoutes from "./components/MainRoutes";
 import configureStore from "./redux/store";
 
-import {requestLogIn} from './redux/actions/user';
-
+import {
+  fetchRestaurantMenus,
+  fetchRestaurantMenuItems,
+  fetchRestaurantWithMenus
+} from "./redux/actions/restaurants";
 
 const store = configureStore();
 
-store.dispatch(requestLogIn('user', 'pass'));
+// store.dispatch(fetchRestaurantMenus("5"));
+// store.dispatch(fetchRestaurantMenuItems("5"));
+// store.dispatch(fetchRestaurantWithMenus("5"));
+
 class App extends Component {
   render() {
     return (
