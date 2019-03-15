@@ -10,15 +10,17 @@ const NotFound = () => <h1>Not Found</h1>;
 const MainRoutes = () => (
   <Fragment>
     <Navbar />
-    <Switch>
-      {publicRoutes.map(route => (
-        <RouteWithSubRoutes key={route.path} {...route} />
-      ))}
-      {privateRoutes.map(route => (
-        <PrivateRoute key={route.path} {...route} />
-      ))}
-      <Route path="/*" component={NotFound} />
-    </Switch>
+    <main>
+      <Switch>
+        {publicRoutes.map(route => (
+          <RouteWithSubRoutes key={route.path} {...route} />
+        ))}
+        {privateRoutes.map(route => (
+          <PrivateRoute key={route.path} {...route} />
+        ))}
+        <Route path="/*" component={NotFound} />
+      </Switch>
+    </main>
   </Fragment>
 );
 
