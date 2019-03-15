@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const httpService = axios.create({
-  baseURL: "localhost",
+  baseURL: "http://localhost:8080/api",
   timeout: 1000,
   headers: {
     Accept: "application/json",
