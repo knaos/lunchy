@@ -13,7 +13,7 @@ class Restaurants extends React.Component {
     return (
       <section>
         <div>
-          <h1>Restaurants</h1>
+          <h1>Available restaurants</h1>
           <Link to="/restaurants/add">
             <button className="btn btn-primary">Add restaurant</button>
           </Link>

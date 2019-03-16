@@ -15,7 +15,7 @@ class RestaurantMenuItems extends React.Component {
     return (
       <section>
         <div>
-          <h1>Menu items</h1>
+          <h1>Today's menu</h1>
           {/* <Link to="/restaurants/add">
             <button className="btn btn-primary">Add restaurant</button>
           </Link> */}
@@ -34,6 +34,7 @@ class RestaurantMenuItems extends React.Component {
                   <td>{menu.id}</td>
                   <td>
                     <span>{menu.name}</span>
+                    <button style={{marginLeft: 10}} type="button" className="btn btn-success">Add</button>
                   </td>
                 </tr>
               ))}

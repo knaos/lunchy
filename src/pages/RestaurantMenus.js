@@ -13,7 +13,7 @@ class RestaurantMenus extends React.Component {
     return (
       <section>
         <div>
-          <h1>Menus</h1>
+          <h1>Now choose a menu</h1>
           {/* <Link to="/restaurants/add">
             <button className="btn btn-primary">Add restaurant</button>
           </Link> */}
@@ -34,6 +34,8 @@ class RestaurantMenus extends React.Component {
                     <Link to={`/restaurants/${match.params.id}/menu-items`}>
                       {menu.name}
                     </Link>
+
+                    
                   </td>
                 </tr>
               ))}
