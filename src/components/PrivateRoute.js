@@ -1,5 +1,6 @@
 import React from "react";
-import { Route, Redirect} from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
 const PrivateRoute = ({
   component: Component,
@@ -7,6 +8,7 @@ const PrivateRoute = ({
   path,
   exact,
   routes,
+  isAuthenticated,
   ...restProps
 }) => (
   <Route
@@ -14,12 +16,12 @@ const PrivateRoute = ({
     path={path}
     {...restProps}
     render={props => {
-      const canGo = isAuthenticated();
-
+      const canGo = isAuthenticated;
+      debugger;
       if (canGo) {
         return <Component {...props} {...componentProps} routes={routes} />;
       } else {
-        return <Redirect to="/login"></Redirect>;
+        return <Redirect to="/sign-in" />;
       }
     }}
   />
@@ -29,5 +31,7 @@ function isAuthenticated() {
   // TODO: implement
   return true;
 }
-
-export default PrivateRoute;
+let mapStateToProps = state => ({
+  isAuthenticated: state.user.isAuthenticated
+});
+export default connect(mapStateToProps)(PrivateRoute);

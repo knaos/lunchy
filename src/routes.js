@@ -8,7 +8,15 @@ import RestaurantMenus from "./pages/RestaurantMenus";
 
 export const publicRoutes = [
   { path: "/", component: Home, exact: true },
-  { path: "/sign-in", component: SignIn, exact: true },
+  { path: "/sign-in", component: SignIn, exact: true }
+];
+
+export const privateRoutes = [
+  {
+    path: "/private",
+    component: () => "private",
+    exact: true
+  },
   { path: "/restaurants", component: Restaurants, exact: true },
   { path: "/restaurants/add", component: RestaurantsAdd, exact: true },
   { path: "/restaurants/edit", component: RestaurantsEdit, exact: true },
@@ -20,14 +28,6 @@ export const publicRoutes = [
   {
     path: "/restaurants/:id/menus",
     component: RestaurantMenus,
-    exact: true
-  }
-];
-
-export const privateRoutes = [
-  {
-    path: "/private",
-    component: () => "private",
     exact: true
   }
 ];
