@@ -13,6 +13,8 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { logIn } from "../redux/actions/user";
 
 const styles = theme => ({
   main: {
@@ -104,6 +106,7 @@ function SignIn(props) {
             onClick={e => {
               e.preventDefault();
               setSubmit(true);
+              props.logIn(email, password);
             }}
           >
             Sign in
@@ -117,5 +120,13 @@ function SignIn(props) {
 SignIn.propTypes = {
   classes: PropTypes.object.isRequired
 };
+const mapDispatchToProps = dispatch => {
+  return {
+    logIn: (username, password) => dispatch(logIn(username, password))
+  };
+};
 
-export default withStyles(styles)(SignIn);
+export default connect(
+  () => {},
+  mapDispatchToProps
+)(withStyles(styles)(SignIn));
