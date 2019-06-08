@@ -7,7 +7,6 @@ import RestaurantMenuItems from "./pages/RestaurantMenuItems";
 import RestaurantMenus from "./pages/RestaurantMenus";
 
 export const publicRoutes = [
-  { path: "/", component: Home, exact: true },
   { path: "/sign-in", component: SignIn, exact: true }
 ];
 
@@ -29,5 +28,6 @@ export const privateRoutes = [
     path: "/restaurants/:id/menus",
     component: RestaurantMenus,
     exact: true
-  }
+  },
+  { path: "/", component: Home, exact: true }
 ];

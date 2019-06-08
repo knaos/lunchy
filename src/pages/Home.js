@@ -1,10 +1,13 @@
 import React from "react";
 import logo from "../logo.svg";
+import { connect } from "react-redux";
 
-const Home = () => (
+const Home = ({ username }) => (
   <div className="App">
-    <h1>Wellcome</h1>
+    <h1>Wellcome {username}</h1>
   </div>
 );
-
-export default Home;
+let mapStateToProps = state => ({
+  username: state.user.username
+});
+export default connect(mapStateToProps)(Home);

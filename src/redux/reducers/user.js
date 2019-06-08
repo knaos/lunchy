@@ -13,7 +13,11 @@ export default function(state = initialState, action) {
     case LOG_IN_ERROR:
       return { ...state, isAuthenticated: false };
     case LOG_IN:
-      return { ...state, username: action.username, isAuthenticated: true };
+      return {
+        ...state,
+        username: action.payload.username,
+        isAuthenticated: true
+      };
     default:
       return state;
   }

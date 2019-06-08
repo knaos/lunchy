@@ -56,7 +56,7 @@ function SignIn(props) {
   const [submit, setSubmit] = useState(false);
 
   if (submit) {
-    return <Redirect to="/restaurants" />;
+    return <Redirect to="/" />;
   }
   return (
     <main className={classes.main}>
@@ -127,6 +127,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  () => {},
+  null,
   mapDispatchToProps
 )(withStyles(styles)(SignIn));

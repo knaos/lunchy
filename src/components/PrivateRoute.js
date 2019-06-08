@@ -17,7 +17,6 @@ const PrivateRoute = ({
     {...restProps}
     render={props => {
       const canGo = isAuthenticated;
-      debugger;
       if (canGo) {
         return <Component {...props} {...componentProps} routes={routes} />;
       } else {
