@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -12,6 +12,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
+import { Redirect } from "react-router-dom";
 
 const styles = theme => ({
   main: {
@@ -48,7 +49,13 @@ const styles = theme => ({
 
 function SignIn(props) {
   const { classes } = props;
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [submit, setSubmit] = useState(false);
 
+  if (submit) {
+    return <Redirect to="/restaurants" />;
+  }
   return (
     <main className={classes.main}>
       <CssBaseline />
@@ -62,7 +69,16 @@ function SignIn(props) {
         <form className={classes.form}>
           <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="email">Email Address</InputLabel>
-            <Input id="email" name="email" autoComplete="email" autoFocus />
+            <Input
+              id="email"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              value={email}
+              onChange={e => {
+                setEmail(e.target.value);
+              }}
+            />
           </FormControl>
           <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="password">Password</InputLabel>
@@ -71,6 +87,8 @@ function SignIn(props) {
               type="password"
               id="password"
               autoComplete="current-password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
             />
           </FormControl>
           <FormControlLabel
@@ -83,6 +101,10 @@ function SignIn(props) {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={e => {
+              e.preventDefault();
+              setSubmit(true);
+            }}
           >
             Sign in
           </Button>

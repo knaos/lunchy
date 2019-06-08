@@ -13,10 +13,6 @@ import {
 
 const store = configureStore();
 
-// store.dispatch(fetchRestaurantMenus("5"));
-// store.dispatch(fetchRestaurantMenuItems("5"));
-// store.dispatch(fetchRestaurantWithMenus("5"));
-
 class App extends Component {
   render() {
     return (
